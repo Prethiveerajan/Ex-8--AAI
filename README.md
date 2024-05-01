@@ -20,11 +20,25 @@ Step 11: Perform speech recognition with exceptional handling:<Br>
 •	If successful, print the recognized text.<Br>
 •	Handle specific exceptions: If the recognition result is unknown or if there is an issue with the request to the Google Speech Recognition service, print corresponding error messages.<Br>
 •	A generic exception block captures any other unexpected errors.<Br>
-<H3>Program:</H3>
+<H3>Program:</H3> :
+import speech_recognition as sr
+r = sr.Recognizer()
+duration = 30
+print("Say something")
+with sr.Microphone() as source:
+    audio_data = r.listen(source,timeout=duration)
 
-Insert your code her
+try:
+    text= r.recognize_google(audio_data)
+except sr.UnknownValueError:
+    print("Sorry, couldn't understand the audio")
+except sr.RequestError as e:
+    print(f'Error with request tp Google Speech Recognition service: {e}')
+except Exception as e:
+    print(f'Error : {e}')
 
 <H3> Output:</H3>
-Show the results here
+https://private-user-images.githubusercontent.com/94154614/326515373-62ed02f8-0386-474b-a5d1-8ebc89d22cf9.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTQ1NDI3OTYsIm5iZiI6MTcxNDU0MjQ5NiwicGF0aCI6Ii85NDE1NDYxNC8zMjY1MTUzNzMtNjJlZDAyZjgtMDM4Ni00NzRiLWE1ZDEtOGViYzg5ZDIyY2Y5LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDA1MDElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwNTAxVDA1NDgxNlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTZmNjk4YmE3ODNjNTBjMDY3MmM0Nzg3NWFhYWIzZmZiZTBmZDhlNjRkMTIxZGM3NjczYWU0ZDA2ODQ3ZjQxMTYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.X3CRynUBk34w_c3rFuoSXe15afbiMDtYEkXmKlIxh0E
 
 <H3> Result:</H3>
+Thus, the python program for Speech Recognition is implemented successfully.
